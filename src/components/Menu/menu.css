@@ -1,0 +1,58 @@
+
+nav {
+  padding: 0.5rem 3rem ;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+}
+
+.logo__container img {
+  height: 35px;
+  
+}
+
+.menu__container {
+  width: 50%;
+}
+.logo__container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+.marca {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+li a {
+  color: white;
+  padding: 0.9rem;
+  border-radius: 10px;
+
+}
+
+li a:hover {
+  background: rgba(0, 0, 0, 0.3);
+ 
+}
