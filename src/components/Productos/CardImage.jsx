@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link as a } from "react-router-dom";
-import fideo from "../../assets/fideos.jpg";
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+
 const Modal = (props) => {
   return (
     <>
@@ -24,11 +24,19 @@ const Modal = (props) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
+
+Modal.propTypes = {
+  handleClick: PropTypes.func,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  imagen: PropTypes.string,
+  price: PropTypes.string
+}
 
 const CardImage = (props) => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false)
 
   return (
     <div className="card__image">
@@ -50,7 +58,14 @@ const CardImage = (props) => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default CardImage;
+CardImage.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  imagen: PropTypes.string,
+  price: PropTypes.number
+}
+
+export default CardImage

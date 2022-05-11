@@ -38,8 +38,14 @@
 
 .masproducts {
   color: var(--color-primary);
+  margin-bottom: 1rem;
 }
 
 .card-extra {
-  height: 100px;
+  height: 200px;
+  margin-bottom:2rem ;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background: black;
 }

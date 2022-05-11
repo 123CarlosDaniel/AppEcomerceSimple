@@ -1,27 +1,41 @@
-import "./contacto.css";
-import { useFormik } from "formik";
-import { useRef} from 'react'
-import emailjs from "emailjs-com";
+import './contacto.css'
+import { useFormik } from 'formik'
+import { useRef, useState } from 'react'
+import emailjs from 'emailjs-com'
+
+const Message = () => {
+  return (
+    <div className="message">
+      <h2>Mensaje enviado</h2>
+    </div>
+  )
+}
 
 const Contacto = () => {
+  const [send, setSend] = useState(false)
   const form = useRef()
   const formik = useFormik({
     initialValues: {
-      asunto: "",
-      nombre: "",
-      email: "",
-      mensaje: "",
+      asunto: '',
+      nombre: '',
+      email: '',
+      mensaje: ''
     },
     onSubmit: (values) => {
-      emailjs.sendForm("service_a2owugw","template_2aistke",form.current,'ez3QVxlfAB8gURWDh')
-      .then((result) => {
-        console.log(form.current);
-      }, (error) => {
-        console.log(error.text);
-      })
+      emailjs.sendForm('service_a2owugw', 'template_2aistke', form.current, 'ez3QVxlfAB8gURWDh')
+        .then((result) => {
+          console.log(form.current)
+          setSend(true)
+        }, (error) => {
+          console.log(error.text)
+        })
+        .catch(error => console.log(error))
       formik.resetForm()
-    },
-  });
+      setTimeout(() => {
+        setSend(false)
+      }, 2000)
+    }
+  })
   return (
     <section id="contacto">
       <h5>Escribenos para conocer nuestras ofertas</h5>
@@ -46,7 +60,7 @@ const Contacto = () => {
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Nombres y Apellidos" 
+            placeholder="Nombres y Apellidos"
             onChange={formik.handleChange}
             value={formik.values.nombre}
             required
@@ -81,8 +95,9 @@ const Contacto = () => {
         </label>
         <input type="submit" className="btn-mini"></input>
       </form>
+      {send ? <Message /> : null}
     </section>
-  );
-};
+  )
+}
 
-export default Contacto;
+export default Contacto

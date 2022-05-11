@@ -1,4 +1,5 @@
 import './sostenibilidad.css'
+
 const Sostenibilidad = () => {
   return (
     <section>

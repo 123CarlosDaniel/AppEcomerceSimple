@@ -12,12 +12,24 @@ form label {
   gap: 0.3rem;
 }
 
+form p {
+  margin-top: 2rem;
+  text-align: center;
+  color: black;
+}
 input, textarea {
   border: 2px solid transparent;
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
   resize: none;
+}
+.message {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(13, 24, 101);
+  margin-top: 1rem;
 }
 /* label input:focus, textarea:focus {
   outline: none;
@@ -34,4 +46,10 @@ input:focus-within, textarea:focus-within {
 
 input:invalid:focus, textarea:invalid:focus {
   border: 2px solid red;
+}
+
+@media screen and (max-width: 600px) {
+  .formulario {
+    width: 90%;
+  }  
 }

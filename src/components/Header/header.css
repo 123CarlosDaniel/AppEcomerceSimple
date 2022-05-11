@@ -30,3 +30,9 @@ header p{
   padding: 1rem 1.5rem;
   border-radius: 15px;
 }
+
+@media screen and (max-width:768px) {
+    .textos {
+      width: 80%;
+    }
+}

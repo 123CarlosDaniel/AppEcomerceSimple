@@ -1,26 +1,22 @@
-import CardImage from "./CardImage";
-import {useEffect, useState} from "react";
-import axios from "axios";
-const urlApi = import.meta.env.URL_API
-
-const ProductsCards = () => {
-  // let url = URL_API
-  let url = "http://localhost:4000/api"
-  const [products, setProducts] = useState([]);
+import CardImage from './CardImage'
+import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+const ProductsCards = (props) => {
+  const [products, setProducts] = useState([])
+  const { url } = props
   useEffect(() => {
     axios.get(url).then(res => {
-      // console.log(res.data);
-      setProducts(res.data.data);
+      setProducts(res.data.data)
     })
     return () => {
-      console.log("cleanup");
+      console.log('cleanup')
     }
   }, [url])
-  
 
   return (
     <div className="products__cards">
-          {products.map((producto) => (
+          {products?.map((producto) => (
             <CardImage
               key={producto._id}
               imagen={producto.image.secure_url}
@@ -34,3 +30,7 @@ const ProductsCards = () => {
 }
 
 export default ProductsCards
+
+ProductsCards.propTypes = {
+  url: PropTypes.string
+}

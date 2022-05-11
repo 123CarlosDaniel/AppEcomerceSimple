@@ -34,25 +34,117 @@ nav {
 
 }
 
-ul {
+.menu__container ul {
   display: flex;
   justify-content: space-around;
 }
 
-li {
+.menu__container li {
   font-size: 1rem;
   letter-spacing: 1.5px;
   font-weight: 500;
-}
-
-li a {
-  color: white;
-  padding: 0.9rem;
   border-radius: 10px;
+  padding: 0.5rem;
 
 }
 
-li a:hover {
-  background: rgba(0, 0, 0, 0.3);
- 
+.menu__container li a {
+  color: white;
 }
+.menu__container li:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+
+}
+.hamburger span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+.hamburger span:nth-child(2) {
+  top: 10px;
+}
+.hamburger span:nth-child(3) {
+  top: 20px;
+}
+
+.hamburger.active span:nth-child(1) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(2) {
+  transform:   rotate(45deg) scale(1.1);
+
+}
+.hamburger.active span:nth-child(3) {
+  transform:  translateY(-10px)  rotate(-45deg) scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  nav {
+    padding: 0.5rem 1rem;
+  }
+  .menu__container {
+    
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+    background: black;
+    opacity: 0.8;
+  }
+  .menu__container.active{
+    display: none
+  } 
+  .marca {
+    font-size: 1.2rem;
+  }
+  .menu__container ul {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu__container li {
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  .menu__container li:hover {
+    background: #4313e0;
+  }
+  .menu__container li a {
+    padding: 0.5rem;
+  }
+}
+  

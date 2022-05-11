@@ -16,3 +16,10 @@
   font-size: 2rem;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .sostenibilidad p {
+    font-size: 1.5rem;
+    width: 80%;
+  }
+}
