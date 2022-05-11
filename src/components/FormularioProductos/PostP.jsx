@@ -1,10 +1,19 @@
 import { Field, Formik, Form } from 'formik'
 import axios from 'axios'
 import './PostP.css'
+import { useState } from 'react'
 const urlApi = import.meta.env.VITE_URL_API // desplegado en heroku
 
-console.log(urlApi)
+const Message = () => {
+  return (
+    <div className="message">
+      <h2>Producto agregado</h2>
+    </div>
+  )
+}
+
 const PostP = () => {
+  const [send, setSend] = useState(false)
   const productos = {
     title: '',
     description: '',
@@ -34,10 +43,16 @@ const PostP = () => {
       <Formik
         initialValues={productos}
         onSubmit={async (values, actions) => {
-          console.log(values)
-          const res = await postData(values)
-          console.log(res)
-          actions.resetForm()
+          try {
+            await postData(values)
+            setSend(true)
+            actions.resetForm()
+          } catch (error) {
+            console.log(error)
+          }
+          setTimeout(() => {
+            setSend(false)
+          }, 2000)
         }}
       >
         {({ setFieldValue, isSubmitting, handleSubmit }) => (
@@ -90,14 +105,11 @@ const PostP = () => {
           />
         </label>
         <input type="submit" className=" btn-mini" />
-          {/* { isSubmitting && <p className="submitting">Submitting...</p>} */}
-          { () => setTimeout(() => {
-            return <p className="submitting">Submitting...</p>
-          }, 2000) }
           </Form>
           </>
         ) }
       </Formik>
+      {send ? <Message /> : null}
     </section>
   )
 }
