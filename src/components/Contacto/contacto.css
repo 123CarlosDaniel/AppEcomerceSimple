@@ -25,11 +25,16 @@ input, textarea {
   resize: none;
 }
 .message {
-  width: 100%;
+  width: fit-content;
+  padding: 0.5rem 1rem;
   margin: 0 auto;
   text-align: center;
-  color: rgb(13, 24, 101);
+  color: white;
+  border-radius: 10px;
+  background-color: #0a7c3a;
+  box-shadow: 0 0 5px #0a7c3a;
   margin-top: 1rem;
+  font-size: 0.75rem;
 }
 /* label input:focus, textarea:focus {
   outline: none;

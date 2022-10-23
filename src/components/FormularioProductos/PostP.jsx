@@ -2,6 +2,7 @@ import { Field, Formik, Form } from 'formik'
 import axios from 'axios'
 import './PostP.css'
 import { useState } from 'react'
+import Loader from '../Loader/Loader'
 const urlApi = import.meta.env.VITE_URL_API // desplegado en heroku
 
 const Message = () => {
@@ -14,6 +15,7 @@ const Message = () => {
 
 const PostP = () => {
   const [send, setSend] = useState(false)
+  const [isloading, setIsloading] = useState(false)
   const productos = {
     title: '',
     description: '',
@@ -24,6 +26,7 @@ const PostP = () => {
   const postData = async (data) => {
     // const url = "http://localhost:4000/api";
     const url = urlApi
+    setIsloading(true)
     const form = new FormData()
     for (const key in data) {
       form.append(key, data[key])
@@ -45,6 +48,7 @@ const PostP = () => {
         onSubmit={async (values, actions) => {
           try {
             await postData(values)
+            setIsloading(false)
             setSend(true)
             actions.resetForm()
           } catch (error) {
@@ -105,6 +109,7 @@ const PostP = () => {
           />
         </label>
         <input type="submit" className=" btn-mini" />
+        {isloading && <Loader/>}
           </Form>
           </>
         ) }

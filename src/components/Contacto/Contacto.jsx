@@ -2,6 +2,7 @@ import './contacto.css'
 import { useFormik } from 'formik'
 import { useRef, useState } from 'react'
 import emailjs from 'emailjs-com'
+import Loader from '../Loader/Loader'
 
 const Message = () => {
   return (
@@ -13,6 +14,7 @@ const Message = () => {
 
 const Contacto = () => {
   const [send, setSend] = useState(false)
+  const [isloading, setIsloading] = useState(false)
   const form = useRef()
   const formik = useFormik({
     initialValues: {
@@ -22,18 +24,19 @@ const Contacto = () => {
       mensaje: ''
     },
     onSubmit: (values) => {
+      setIsloading(true)
       emailjs.sendForm('service_a2owugw', 'template_2aistke', form.current, 'ez3QVxlfAB8gURWDh')
         .then((result) => {
           console.log(form.current)
+          setIsloading(false)
           setSend(true)
+          setTimeout(() => {
+            setSend(false)
+          }, 2000)
         }, (error) => {
           console.log(error.text)
         })
-        .catch(error => console.log(error))
       formik.resetForm()
-      setTimeout(() => {
-        setSend(false)
-      }, 2000)
     }
   })
   return (
@@ -94,8 +97,9 @@ const Contacto = () => {
           </textarea>
         </label>
         <input type="submit" className="btn-mini"></input>
+        { isloading && <Loader/>}
       </form>
-      {send ? <Message /> : null}
+      {send && <Message />}
     </section>
   )
 }
