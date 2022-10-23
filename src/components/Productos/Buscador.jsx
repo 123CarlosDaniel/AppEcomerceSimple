@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import propTypes from 'prop-types'
-const urlApi = import.meta.env.VITE_URL_API // desplegado en heroku
+const urlApi = import.meta.env.VITE_URL_API // desplegado en render
 
 const Buscador = ({ setUrl }) => {
   const [active, setActive] = useState('')

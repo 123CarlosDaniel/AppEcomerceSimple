@@ -3,7 +3,7 @@ import './productos.css'
 import ProductsCards from './ProductsCards'
 import { useState } from 'react'
 const Productos = () => {
-  const urlApi = import.meta.env.VITE_URL_API // desplegado en heroku
+  const urlApi = import.meta.env.VITE_URL_API // desplegado en render
   const [url, setUrl] = useState(urlApi)
 
   return (
